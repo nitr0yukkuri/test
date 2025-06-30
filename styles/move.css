@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #111;
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  background-image: url(./images/img_detail05.webp);
+  background-color: #ffcc00;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  transition: transform 0.05s ease;
+  mix-blend-mode: difference; /* 色が背景に映えるように */
+   
+}
