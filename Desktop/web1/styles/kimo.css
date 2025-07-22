@@ -1,0 +1,79 @@
+/* 画像のサイズ調整 */
+.kimo {
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  display: block;
+  margin: 20px auto;
+  filter: sepia(0.3) contrast(0.85) brightness(0.8);
+}
+
+/* セクション全体のスタイル */
+section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #2e2b28; /* 暗めのブラウン系 */
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8);
+  font-family: 'Georgia', serif;
+  color: #cfc3b8; /* ベージュ系の文字色 */
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+}
+
+/* ヘッダーの装飾 */
+#ki {
+  background-image: url(./images/EBYAA0eUIAEF3sm.jpg);
+  background-size: 20%;
+  background-position: center;
+  background-repeat: repeat-x;
+  color: #d9c7b8; /* 薄いベージュ */
+  padding: 80px 20px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+  font-family: 'Georgia', serif;
+  user-select: none;
+  filter: sepia(0.2);
+}
+
+/* h2 の見出しデザイン */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 14px;
+  color: #b59e8d;
+  border-bottom: 2px solid #7e6658; /* 落ち着いたブラウンの線 */
+  padding-bottom: 8px;
+  font-family: 'Georgia', serif;
+}
+
+/* pタグのマージン調整 */
+section p, section small p {
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+}
+
+/* フッターのスタイル */
+footer {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #22201d;
+  color: #8f877a;
+  font-size: 0.9rem;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  user-select: none;
+}
+
+/* ボディ全体の背景色とフォント */
+body {
+  background-color: #1c1a18; /* かなり暗めのブラウンブラック */
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+  color: #cfc3b8;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>2枚の追従カーソル</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh; /* 画面の高さいっぱいにする */
+      background-color: #f9f9f9; /* 背景色 */
+      cursor: none; /* デフォルトのマウスカーソルを非表示に */
+    }
+
+    .cursor-image, .delay-image {
+      width: 100px; /* 画像の幅 */
+      height: 100px; /* 画像の高さ */
+      position: absolute; /* 絶対配置で自由に動かせるように */
+      pointer-events: none; /* 画像にマウスイベントが当たらないように */
+      z-index: 1000; /* 重なり順、数字が大きいほど前面に表示 */
+    }
+
+    .delay-image {
+      z-index: 999; /* 1枚目の画像よりも下に表示 */
+      opacity: 0.6; /* 半透明にして遅れていることを強調 */
+    }
+  </style>
+</head>
+<body>
+  <!-- 即時にマウスを追従する画像 -->
+  <img src="./images/standardkart 8.jpg" class="cursor-image" id="cursor1">
+  <!-- 遅れてマウスを追従する画像 -->
+  <img src="./images/img_detail05.webp" class="delay-image" id="cursor2">
+
+  <script>
+    // それぞれの画像要素を取得
+    const cursor1 = document.getElementById('cursor1'); // 即時追従用
+    const cursor2 = document.getElementById('cursor2'); // 遅延追従用
+
+    // マウスの現在座標
+    let mouseX = 0;
+    let mouseY = 0;
+    // 遅延画像の現在座標（初期は0）
+    let delayX = 0;
+    let delayY = 0;
+
+    // マウスが動いたときの処理
+    document.addEventListener('mousemove', function (e) {
+      mouseX = e.pageX; // マウスのX座標を取得
+      mouseY = e.pageY; // マウスのY座標を取得
+
+      // 1枚目の画像はマウスの位置に即座に移動させる
+      cursor1.style.left = mouseX + 'px';
+      cursor1.style.top = mouseY + 'px';
+    });
+
+    // アニメーション処理：2枚目の画像を遅れて追従させる
+    function animate() {
+      // 現在の遅延位置を少しずつマウス位置に近づける
+      // (mouseX - delayX) はマウスと遅延位置の距離
+      // 0.01は移動量の割合。小さいほどゆっくり動く
+      delayX += (mouseX - delayX) * 0.1;
+      delayY += (mouseY - delayY) * 0.1;
+
+      // 遅延画像の位置を更新
+      cursor2.style.left = delayX + 'px';
+      cursor2.style.top = delayY + 'px';
+
+      // 次のフレームでも同じ処理を繰り返す（スムーズなアニメーション）
+      requestAnimationFrame(animate);
+    }
+
+    // アニメーション開始
+    animate();
+  </script>
+</body>
+</html>

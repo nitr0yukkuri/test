@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>ニコニコ風コメント</title>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    height: 200px;
+  }
+  .comment {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<script>
+  const comments = [
+    "こんにちは！", 
+    "すごい！", 
+    "草", 
+    "神動画！", 
+    "また見に来たよ～", 
+    "最高！", 
+    "wwww", 
+    "ありがとう！"
+  ];
+
+  // 画面幅・高さを取得
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  // コメントを作って流す関数
+  function createComment(text) {
+    const comment = document.createElement("div");
+    comment.className = "comment";
+    comment.textContent = text;
+
+    // 縦位置をランダムに（0〜画面高さ-30pxの間）
+    comment.style.top = Math.random() * (height - 30) + "px";
+    // 画面右端に配置
+    comment.style.left = width + "px";
+
+    document.body.appendChild(comment);
+
+    // 動かす速さ（px/frame）
+    const speed = 2 + Math.random() * 3;
+
+    function move() {
+      // 現在の位置を取得
+      let left = parseFloat(comment.style.left);
+      // 左に移動
+      left -= speed;
+      comment.style.left = left + "px";
+
+      // 画面左端を超えたら削除
+      if (left + comment.offsetWidth < 0) {
+        document.body.removeChild(comment);
+      } else {
+        requestAnimationFrame(move);
+      }
+    }
+
+    move();
+  }
+
+  // 2秒ごとにランダムなコメントを流す
+  setInterval(() => {
+    const text = comments[Math.floor(Math.random() * comments.length)];
+    createComment(text);
+  }, 2000);
+
+</script>
+
+</body>
+</html>
